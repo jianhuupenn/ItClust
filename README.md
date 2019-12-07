@@ -7,7 +7,7 @@ ItClust is an Iterative Transfer learning algorithm for scRNA-seq Clustering. It
 ItClust has shown to be a powerful tool for scRNA-seq clustering and cell type classification analysis. It can accurately extract information from source data and apply it to help cluster cells in target data. It is robust to strong batch effect between source and target data, and is able to separate unseen cell types in the target. Furthermore, it provides confidence scores that facilitates cell type assignment. With the increasing popularity of scRNA-seq in biomedical research, we expect ItClust will make better utilization of the vast amount of existing well annotated scRNA-seq datasets, and enable researchers to accurately cluster and annotate cells in scRNA-seq.
 
 
-![ItClust workflow](./docs/assets/images/workflow.jpg)
+![ItClust workflow](docs/asserts/images/workflow.jpg)
 
 For thorough details, see the preprint: [Bioxiv](https://www.biorxiv.org/content/10.1101/530378v1?rss=1)
 <br>
