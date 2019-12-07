@@ -1,21 +1,19 @@
 # ItClust
-ransfer learning significantly improved clustering and cell type classification in single-cell RNA-seq analysis
 
 ## ItClust: Transfer learning improves clustering and cell type classification in single-cell RNA-seq analysis
 
 ItClust is an Iterative Transfer learning algorithm for scRNA-seq Clustering. It starts from building a training neural network to extract gene-expression signatures from a well-labeled source dataset. This step enables initializing the target network with parameters estimated from the training network. The target network then leverages information in the target dataset to iteratively fine-tune parameters in an unsupervised manner, so that the target-data-specific gene-expression signatures are captured. Once fine-tuning is finished, the target network then returns clustered cells in the target data.
 ItClust has shown to be a powerful tool for scRNA-seq clustering and cell type classification analysis. It can accurately extract information from source data and apply it to help cluster cells in target data. It is robust to strong batch effect between source and target data, and is able to separate unseen cell types in the target. Furthermore, it provides confidence scores that facilitates cell type assignment. With the increasing popularity of scRNA-seq in biomedical research, we expect ItClust will make better utilization of the vast amount of existing well annotated scRNA-seq datasets, and enable researchers to accurately cluster and annotate cells in scRNA-seq.
 
-
 ![ItClust workflow](docs/asserts/images/workflow.jpg)
 
-For thorough details, see the preprint: [Bioxiv](https://www.biorxiv.org/content/10.1101/530378v1?rss=1)
+For thorough details, see the preprint: [Bioxiv]()
 <br>
 
 
 ## Usage
 
-The [**desc**](https://github.com/eleozzr/desc) package is an implementation of deep embedding for single-cell clustering. With desc, you can:
+The [**ItClust**](https://github.com/jianhuupenn/TransClust) package is an implementation of Iterative Transfer learning algorithm for scRNA-seq Clustering. With ItClust, you can:
 
 - Preprocess single cell gene expression data from various formats.
 - Build a low-dimensional representation of the single-cell gene expression data.
@@ -26,7 +24,7 @@ The [**desc**](https://github.com/eleozzr/desc) package is an implementation of 
 
 # Installation
 
-To install  `desc` package you must make sure that your python version is either  `3.5.x` or `3.6.x`. If you don’t know the version of python you can check it by:
+To install  `ItClust` package you must make sure that your python version is either  `3.5.x` or `3.6.x`. If you don’t know the version of python you can check it by:
 ```python
 >>>import platform
 >>>platform.python_version()
@@ -81,14 +79,14 @@ python setup.py install
 # now you can check whether `desc` installed successfully!
 ```
 
-Please check desc [Tutorial](https://eleozzr.github.io/desc/tutorial.html) for more details. And we also provide a simple example [paul\_desc.md](./desc_paul.md) or [desc\_paul.ipynb](./desc_paul.ipynb) for reproducing the results of Paul's data in our paper.
+Please check desc [Tutorial]() for more details. And we also provide a simple example [paul\_desc.md](./desc_paul.md) or [desc\_paul.ipynb](./desc_paul.ipynb) for reproducing the results of Paul's data in our paper.
 
 
 <br>
 
 ## Contributing
 
-Souce code: [Github](https://github.com/eleozzr/desc)  
+Souce code: [Github](https://github.com/jianhuupenn/TransClust)  
 
 We are continuing adding new features. Bug reports or feature requests are welcome.
 
@@ -99,5 +97,5 @@ We are continuing adding new features. Bug reports or feature requests are welco
 
 Please consider citing the following reference:
 
-- Xiangjie Li, Yafei Lyu, Jihwan Park, Jingxiao Zhang, Dwight Stambolian, Katalin Susztak, Gang Hu, Mingyao Li. Deep learning enables accurate clustering and batch effect removal in single-cell RNA-seq analysis. 2019. bioRxiv 530378; doi: [https://doi.org/10.1101/530378](https://www.biorxiv.org/content/10.1101/530378v1?rss=1)
+- 
 <br>
