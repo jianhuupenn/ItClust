@@ -13,7 +13,7 @@ For thorough details, see the preprint: [Bioxiv]()
 
 ## Usage
 
-The [**ItClust**](https://github.com/jianhuupenn/TransClust) package is an implementation of Iterative Transfer learning algorithm for scRNA-seq Clustering. With ItClust, you can:
+The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implementation of Iterative Transfer learning algorithm for scRNA-seq Clustering. With ItClust, you can:
 
 - Preprocess single cell gene expression data from various formats.
 - Build a low-dimensional representation of the single-cell gene expression data.
@@ -86,7 +86,7 @@ Please check desc [Tutorial]() for more details. And we also provide a simple ex
 
 ## Contributing
 
-Souce code: [Github](https://github.com/jianhuupenn/TransClust)  
+Souce code: [Github](https://github.com/jianhuupenn/ItClust)  
 
 We are continuing adding new features. Bug reports or feature requests are welcome.
 
