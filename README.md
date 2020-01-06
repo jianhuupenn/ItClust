@@ -16,9 +16,10 @@ For thorough details, see the preprint: [Bioxiv]()
 The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implementation of Iterative Transfer learning algorithm for scRNA-seq Clustering. With ItClust, you can:
 
 - Preprocess single cell gene expression data from various formats.
-- Build a low-dimensional representation of the single-cell gene expression data.
+- Build a network for target data clustering with prioe knowledge learnt from the source data
 - Obtain soft-clustering assignments of cells.
-- Visualize the cell clustering results and  the  gene expression patterns.
+- Obtain celltype confidence score for each clsuter to assist celltype assignment.
+- Visualize the cell clustering/classification results and the gene expression patterns.
 
 <br>
 
@@ -29,30 +30,32 @@ To install  `ItClust` package you must make sure that your python version is eit
 >>>import platform
 >>>platform.python_version()
 #3.5.3
+```
+**Note:** Because desc depend on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0` if you want to get the same results as the results in our paper.
+```
 >>>import tensorflow as tf
 >>> tf.__version__
 #1.7.0
 ```
-**Note:** Because desc depend on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0` if you want to get the same results as the results in our paper.
-Now you can install the current release of `desc` by the following three ways.
+Now you can install the current release of `ItClust` by the following three ways.
 
 * PyPI  
 Directly install the package from PyPI.
 
 ```bash
-$ pip install desc
+$ pip install ItClust
 ```
 **Note**: you need to make sure that the `pip` is for python3，or we should install desc by
 ```bash 
-python3 -m pip install desc 
+python3 -m pip install ItClust
 #or
-pip3 install desc
+pip3 install ItClust
 ```
 
 If you do not have permission (when you get a permission denied error), you should install desc by 
 
 ```bash
-$ pip install --user desc
+$ pip install --user  ItClust
 ```
 
 * Github  
