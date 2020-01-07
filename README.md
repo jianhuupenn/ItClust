@@ -27,14 +27,14 @@ The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implemen
 
 To install  `ItClust` package you must make sure that your python version is either  `3.5.x` or `3.6.x`. If you don’t know the version of python you can check it by:
 ```python
->>>import platform
->>>platform.python_version()
+import platform
+platform.python_version()
 #3.5.3
 ```
 **Note:** Because desc depend on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0` if you want to get the same results as the results in our paper.
 ```
->>>import tensorflow as tf
->>> tf.__version__
+import tensorflow as tf
+tf.__version__
 #1.7.0
 ```
 Now you can install the current release of `ItClust` by the following three ways.
@@ -43,7 +43,7 @@ Now you can install the current release of `ItClust` by the following three ways
 Directly install the package from PyPI.
 
 ```bash
-$ pip install ItClust
+pip install ItClust
 ```
 **Note**: you need to make sure that the `pip` is for python3，or we should install desc by
 ```bash 
@@ -55,7 +55,7 @@ pip3 install ItClust
 If you do not have permission (when you get a permission denied error), you should install desc by 
 
 ```bash
-$ pip install --user  ItClust
+pip install --user  ItClust
 ```
 
 * Github  
@@ -69,7 +69,7 @@ pip install .
 
 * Anaconda
 
-If you do not have  Python3.5 or Python3.6 installed, consider installing Anaconda  (see [Installing Anaconda](https://docs.anaconda.com/anaconda/install/)). After installing Anaconda, you can create a new environment, for example, `DESC` (*you can change to any name you like*):
+If you do not have  Python3.5 or Python3.6 installed, consider installing Anaconda  (see [Installing Anaconda](https://docs.anaconda.com/anaconda/install/)). After installing Anaconda, you can create a new environment, for example, `ItClust` (*you can change to any name you like*):
 
 ```bash
 conda create -n DESC python=3.5.3
@@ -94,7 +94,7 @@ The current version of ItClust works with an AnnData object. AnnData stores a da
 1.1 Start from a 10X dataset
 Here we use the pbmc data as an example: Download the data and unzip it. Then move everything in filtered_gene_bc_matrices/hg19/ to data/pbmc/.
 ```python
->>>adata = read_10X(data_path='./data/pbmc')
+adata = read_10X(data_path='./data/pbmc')
 #var_names are not unique, "make_index_unique" has applied
 ```
 1.2 Start from .mtx and .tsv files
@@ -118,9 +118,24 @@ adata.obs_names = cells[0]
 # Make sure the cell names are unique
 adata.obs_names_make_unique(join="-")
 ```
+<br>
 
+1.3 Start from a *.h5ad file
+We will use human pancreas data as our example for transfer learning. The Baron et al. data is used as source data and Segerstolpe et al. is treated as traget data. We can use following code to read data in from *.h5ad files:
+```python
+import scanpy.api as sc
+adata_train=sc.read("./data/pancreas/Bh.h5ad")
+adata_test=sc.read("./data/pancreas/smartseq2.h5ad")
+```
 
+## Clustering
+```python
+import ItClust
+clf=ItClust.transfer_learning_clf()
+clf.fit(source_data=adata_train, target_data=adata_test)
+clf.predict(save_dir="./pancreas_results")
 
+```
 ## Contributing
 
 Souce code: [Github](https://github.com/jianhuupenn/ItClust)  
