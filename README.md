@@ -87,6 +87,40 @@ Please check desc [Tutorial]() for more details. And we also provide a simple ex
 
 <br>
 
+
+# Read in data
+The current version of ItClust works with an AnnData object. AnnData stores a data matrix .X together with annotations of observations .obs, variables .var and unstructured annotations .uns. The ItClust package provides 3 ways to prepare an AnnData object for the following analysis.
+<br>
+1.1 Start from a 10X dataset
+Here we use the pbmc data as an example: Download the data and unzip it. Then move everything in filtered_gene_bc_matrices/hg19/ to data/pbmc/.
+```python
+>>>adata = read_10X(data_path='./data/pbmc')
+#var_names are not unique, "make_index_unique" has applied
+```
+1.2 Start from .mtx and .tsv files
+When the expression data do not follow the standard 10X dataset format, we can manually import the data as follows.
+```python
+#1 Read the expression matrix from *.mtx file.
+# The row of this matrix correspond to cells, columns corresond to genes. 
+adata = read_mtx('./data/pbmc/matrix.mtx').T 
+
+#2 Read the *.tsv file for gene annotations. Make sure the gene names are unique.
+genes = pd.read_csv('./data/pbmc/genes.tsv', header=None, sep='\t')
+adata.var['gene_ids'] = genes[0].values
+adata.var['gene_symbols'] = genes[1].values
+adata.var_names = adata.var['gene_symbols']
+# Make sure the gene names are unique
+adata.var_names_make_unique(join="-")
+#3 Read the *.tsv file for cell annotations. Make sure the cell names are unique.
+cells = pd.read_csv('./data/pbmc/barcodes.tsv', header=None, sep='\t')
+adata.obs['barcode'] = cells[0].values
+adata.obs_names = cells[0]
+# Make sure the cell names are unique
+adata.obs_names_make_unique(join="-")
+```
+
+
+
 ## Contributing
 
 Souce code: [Github](https://github.com/jianhuupenn/ItClust)  
