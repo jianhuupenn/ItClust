@@ -245,8 +245,14 @@ The clustering probability matrix is written to save_dir+"/clustering_prob.csv"
 ```python
 pred, prob, celltype_pred=clf.predict()
 pred.head()
-
 ```
+
+    Results are written to  ./results
+
+
+
+
+
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -298,6 +304,7 @@ pred.head()
   </tbody>
 </table>
 </div>
+
 
 
 ### 5. Visualization
