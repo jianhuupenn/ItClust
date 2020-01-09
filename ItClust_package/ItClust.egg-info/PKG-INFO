@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: ItClust
+Version: 0.0.5
+Summary: An Iterative Transfer learning algorithm for scRNA-seq Clustering
+Home-page: https://github.com/jianhuupenn/ItClust
+Author: Jian Hu
+Author-email: jianhu@pennmedicine.upenn.edu
+License: UNKNOWN
+Description: ItClust
+        
+        ItClust: Transfer learning improves clustering and cell type classification in single-cell RNA-seq analysis
+        
+        ItClust is an Iterative Transfer learning algorithm for scRNA-seq Clustering. It starts from building a training neural network to extract gene-expression signatures from a well-labeled source dataset. This step enables initializing the target network with parameters estimated from the training network. The target network then leverages information in the target dataset to iteratively fine-tune parameters in an unsupervised manner, so that the target-data-specific gene-expression signatures are captured. Once fine-tuning is finished, the target network then returns clustered cells in the target data.
+        ItClust has shown to be a powerful tool for scRNA-seq clustering and cell type classification analysis. It can accurately extract information from source data and apply it to help cluster cells in target data. It is robust to strong batch effect between source and target data, and is able to separate unseen cell types in the target. Furthermore, it provides confidence scores that facilitates cell type assignment. With the increasing popularity of scRNA-seq in biomedical research, we expect ItClust will make better utilization of the vast amount of existing well annotated scRNA-seq datasets, and enable researchers to accurately cluster and annotate cells in scRNA-seq.
+        
+        For more info, please go to our github page: https://github.com/jianhuupenn/ItClust
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
