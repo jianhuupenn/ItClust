@@ -12,7 +12,7 @@ import platform
 platform.python_version()
 #3.5.3
 ```
-**Note:** Because ItClust depend on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0` if you want to get the same results as the results in our paper.
+**Note:** Because ItClust depends on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0`. If you want to get the same results as the results in our paper.
 ```
 import tensorflow as tf
 tf.__version__
@@ -102,14 +102,14 @@ set_random_seed(20180806) # on GPU may be some other default
 ### 2. Read in data
 The current version of ItClust works with an AnnData object. AnnData stores a data matrix .X together with annotations of observations .obs, variables .var and unstructured annotations .uns. The ItClust package provides 3 ways to prepare an AnnData object for the following analysis.
 <br>
-ItClust support most forms of the scRNAseq data, including UMI, TPM, FPKM.
+ItClust supports most forms of the scRNAseq data, including UMI, TPM, FPKM.
 <br>
 <br>
-Important Note: For the source data, please store the true celltype label information in one column named "celltype".
+Important Note: For the source data, please store the true cell type label information in one column named "cell type".
 
 #### 1.1 Start from a 10X dataset
 Here we use the pbmc data as an example:
-Download the data and unzip it. Then move everything in filtered_gene_bc_matrices/hg19/ to data/pbmc/.
+Download the data and unzip it. Then move the data to data/pbmc/.
 
 
 ```python
@@ -125,7 +125,7 @@ When the expression data do not follow the standard 10X dataset format, we can m
 
 ```python
 #1 Read the expression matrix from *.mtx file.
-# The row of this matrix correspond to cells, columns corresond to genes. 
+# The rows of this matrix correspond to cells, columns corresond to genes. 
 adata = read_mtx('./data/pbmc/matrix.mtx').T 
 
 #2 Read the *.tsv file for gene annotations. Make sure the gene names are unique.
@@ -149,7 +149,7 @@ adata.obs_names_make_unique(join="-")
 
 #### 2.3 Start from a *.h5ad file
 We will use human pancreas data as our example for transfer learning.
-The Baron et al. data is used as source data and Segerstolpe et al. is treated as traget data. We can use following code to read data in from *.h5ad files:
+The Baron et al. data is used as source data and Segerstolpe et al. is treated as traget data. We can use the following codes to read data in from *.h5ad files:
 
 
 ```python
@@ -166,7 +166,7 @@ clf=ic.transfer_learning_clf()
 clf.fit(adata_train, adata_test)
 ```
     the var_names of adata.raw: adata.raw.var_names.is_unique=: True
-    The number of training celltypes is:  14
+    The number of training cell types is:  14
     Training the source network
     The layer numbers are[32, 16]
     The shape of xtrain is:8569:867
@@ -236,14 +236,14 @@ If the parameter write==True(default), it will also write the results to save_di
 
 The cluster prediction is written to save_dir+"/clustering_results.csv".
 
-The cell type confidence score is written to save_dir+"/celltype_assignment.txt"
+The cell type confidence score is written to save_dir+"/cell type_assignment.txt"
 
 The clustering probability matrix is written to save_dir+"/clustering_prob.csv"
 
 
 
 ```python
-pred, prob, celltype_pred=clf.predict()
+pred, prob, cell type_pred=clf.predict()
 pred.head()
 ```
 
@@ -303,10 +303,10 @@ matplotlib.rcParams['figure.dpi']= 300
 colors_use=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', '#98df8a', '#ff9896','#bec1d4','#bb7784','#4a6fe3','#FFFF00''#111010']
 # Run t-SNE
 clf.adata_test.obsm['X_tsne']=clf.tSNE()
-num_celltype=len(clf.adata_test.obs["celltype"].unique())
-clf.adata_test.uns["celltype_colors"]=list(colors_use[:num_celltype])
-clf.adata_test.uns["decisy_trans_True_colors"]=list(colors_use[:num_celltype])
-sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","celltype"],title=["ItClust predition","True cell type"],show=True,size=50000/clf.adata_test.shape[0])
+num_cell type=len(clf.adata_test.obs["cell type"].unique())
+clf.adata_test.uns["cell type_colors"]=list(colors_use[:num_cell type])
+clf.adata_test.uns["decisy_trans_True_colors"]=list(colors_use[:num_cell type])
+sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","cell type"],title=["ItClust predition","True cell type"],show=True,size=50000/clf.adata_test.shape[0])
 ```
 
     Doing t-SNE!
@@ -322,7 +322,7 @@ sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","celltype"],title=["ItClust
 
 ```python
 clf.adata_test.obsm['X_umap']
-sc.pl.umap(clf.adata_test,color=["decisy_trans_True","celltype"],show=True,save=None,title=["ItClust predition","True cell type"],size=50000/adata_test.shape[0])
+sc.pl.umap(clf.adata_test,color=["decisy_trans_True","cell type"],show=True,save=None,title=["ItClust predition","True cell type"],size=50000/adata_test.shape[0])
 ```
 
 
