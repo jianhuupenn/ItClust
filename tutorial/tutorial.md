@@ -44,8 +44,8 @@ Download the package from [Github]() and install it locally:
 
 ```bash
 git clone https://github.com/jianhuupenn/ItClust
-cd desc
-pip install .
+cd ItClust/ItClust_package/
+pip3 install ItClust
 ```
 
 * Anaconda
