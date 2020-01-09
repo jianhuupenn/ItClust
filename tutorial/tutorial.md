@@ -97,12 +97,6 @@ set_random_seed(20180806) # on GPU may be some other default
 ```
 
     Using TensorFlow backend.
-    /Users/hujian1/anaconda3/envs/keras/lib/python3.7/site-packages/scanpy/api/__init__.py:6: FutureWarning: 
-    
-    In a future version of Scanpy, `scanpy.api` will be removed.
-    Simply use `import scanpy as sc` and `import scanpy.external as sce` instead.
-    
-      FutureWarning
 
 
 ### 2. Read in data
@@ -172,11 +166,6 @@ clf=ic.transfer_learning_clf()
 clf.fit(adata_train, adata_test)
 ```
     the var_names of adata.raw: adata.raw.var_names.is_unique=: True
-    /Users/hujian1/anaconda3/envs/keras/lib/python3.7/site-packages/scanpy/preprocessing/_simple.py:284: DeprecationWarning: Use is_view instead of isview, isview will be removed in the future.
-      if isinstance(data, AnnData) and data.isview:
-    /Users/hujian1/anaconda3/envs/keras/lib/python3.7/site-packages/scanpy/utils.py:618: DeprecationWarning: Use is_view instead of isview, isview will be removed in the future.
-      if adata.isview:
-
     The number of training celltypes is:  14
     Training the source network
     The layer numbers are[32, 16]
@@ -187,9 +176,6 @@ clf.fit(adata_train, adata_test)
     Doing SAE: pretrain_stacks
     Pretraining the 1th layer...
     learning rate = 0.1
-
-    /Users/hujian1/anaconda3/envs/keras/lib/python3.7/site-packages/tensorflow_core/python/framework/indexed_slices.py:339: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3,and in 3.9 it will stop working
-      if not isinstance(values, collections.Sequence):
 
     learning rate = 0.01
     learning rate = 0.001
@@ -211,8 +197,6 @@ clf.fit(adata_train, adata_test)
     Pretraining time:  158.4946711063385
     y known, initilize Cluster centroid using y
     The shape of cluster_center is (14, 16)
-    WARNING:tensorflow:From /Users/hujian1/anaconda3/envs/keras/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:1521: The name tf.log is deprecated. Please use tf.math.log instead.
-    
     Doing DEC: fit_supervised
     Training model finished! Start to fit target network!
     Doing DEC: pretrain_transfer
