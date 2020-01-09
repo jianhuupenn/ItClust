@@ -232,13 +232,13 @@ clf.fit(adata_train, adata_test)
 ### 4. Prediction
 predict() function will return the cluster prediction, clustering probability matrix and cell type confidence score. 
 
-If the parameter write==True(default), it will also write the results to save_dir
+If the parameter write==True(default), it will also write the results to save_dir.
 
 The cluster prediction is written to save_dir+"/clustering_results.csv".
 
-The cell type confidence score is written to save_dir+"/cell type_assignment.txt"
+The cell type confidence score is written to save_dir+"/cell type_assignment.txt".
 
-The clustering probability matrix is written to save_dir+"/clustering_prob.csv"
+The clustering probability matrix is written to save_dir+"/clustering_prob.csv".
 
 
 
