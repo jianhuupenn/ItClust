@@ -15,10 +15,10 @@ For thorough details, see the preprint: [Bioxiv]()
 The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implementation of Iterative Transfer learning algorithm for scRNA-seq Clustering. With ItClust, you can:
 
 - Preprocess single cell gene expression data from various formats.
-- Build a network for target data clustering with prioe knowledge learnt from the source data
+- Build a network for target data clustering with prioe knowledge learnt from the source data.
 - Obtain soft-clustering assignments of cells.
-- Obtain celltype confidence score for each clsuter to assist celltype assignment.
-- Visualize the cell clustering/classification results and the gene expression patterns.
+- Obtain cell type confidence score for each clsuter to assist cell type assignment.
+- Visualize cell clustering/classification results and gene expression patterns.
 
 <br>
 For tutorial, please refer to: https://github.com/jianhuupenn/ItClust/blob/master/tutorial/tutorial.md
@@ -26,13 +26,13 @@ For tutorial, please refer to: https://github.com/jianhuupenn/ItClust/blob/maste
 ## Contributing
 
 Souce code: [Github](https://github.com/jianhuupenn/ItClust)  
-
+Author email: jianhu@pennmedicine.upenn.edu
 We are continuing adding new features. Bug reports or feature requests are welcome.
 
 <br>
 
 
-## References
+## Reference
 
 Please consider citing the following reference:
 
