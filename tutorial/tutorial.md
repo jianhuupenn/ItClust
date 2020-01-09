@@ -247,6 +247,58 @@ pred, prob, celltype_pred=clf.predict()
 pred.head()
 
 ```
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cell_id</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AZ_A2-target</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AZ_H5-target</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AZ_G5-target</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AZ_D8-target</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AZ_D12-target</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 ### 5. Visualization
 #### 5.1 t-SNE
