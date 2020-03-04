@@ -21,11 +21,14 @@ The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implemen
 
 <br>
 For tutorial, please refer to: https://github.com/jianhuupenn/ItClust/blob/master/tutorial/tutorial.md
-# System Requirements
+
+## System Requirements
+
 Python support packages: pandas, numpy, keras, scipy, scanpy, anndata, natsort, sklearn
-# Versions the software has been tested on
-Environment1:
-System: Mac OS 10.13.6 
+
+## Versions the software has been tested on
+Environment1:\\
+System: Mac OS 10.13.6\\
 Python: 3.7.0
 pandas: 0.25.3
 numpy: 1.18.1
