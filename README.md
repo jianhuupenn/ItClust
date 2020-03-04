@@ -41,6 +41,9 @@ Environment 3:
 - Python: 3.5.2
 - Python packages: pandas = 0.22.0, numpy = 1.16.4, keras = 2.2.4, scipy = 1.0.1, scanpy = 1.3.1+21.g1df151f, anndata = 0.6.20, natsort = 5.2.0, sklearn = 0.19.1
 
+## Installation guide, Demo and Instructions for use
+Please please refer to: https://github.com/jianhuupenn/ItClust/blob/master/tutorial/tutorial.md
+
 
 ## Contributing
 
@@ -48,7 +51,6 @@ Souce code: [Github](https://github.com/jianhuupenn/ItClust)
 Author email: jianhu@pennmedicine.upenn.edu
 <br>
 We are continuing adding new features. Bug reports or feature requests are welcome.
-
 <br>
 
 
