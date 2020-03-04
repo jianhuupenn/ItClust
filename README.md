@@ -19,9 +19,6 @@ The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implemen
 - Obtain cell type confidence score for each clsuter to assist cell type assignment.
 - Visualize cell clustering/classification results and gene expression patterns.
 
-<br>
-For tutorial, please refer to: https://github.com/jianhuupenn/ItClust/blob/master/tutorial/tutorial.md
-
 ## System Requirements
 Python support packages: pandas, numpy, keras, scipy, scanpy, anndata, natsort, sklearn.
 
