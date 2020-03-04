@@ -23,13 +23,25 @@ The [**ItClust**](https://github.com/jianhuupenn/ItClust) package is an implemen
 For tutorial, please refer to: https://github.com/jianhuupenn/ItClust/blob/master/tutorial/tutorial.md
 
 ## System Requirements
-Python support packages: pandas, numpy, keras, scipy, scanpy, anndata, natsort, sklearn
+Python support packages: pandas, numpy, keras, scipy, scanpy, anndata, natsort, sklearn.
 
 ## Versions the software has been tested on
-Environment1:
+Environment 1:
 - System: Mac OS 10.13.6
 - Python: 3.7.0
 - Python packages: pandas = 0.25.3, numpy = 1.18.1, keras = 2.2.4, scipy = 1.4.1, scanpy = 1.4.4.post1, anndata = 0.6.22.post1, natsort = 7.0.1, sklearn = 0.22.1
+
+Environment 2:
+- System: Linux 3.10.0
+- Python: 3.7.5
+- Python packages: pandas = 0.25.3, numpy = 1.17.3, keras = 2.3.1, scipy = 1.4.1, scanpy = 1.4.4.post1, anndata = 0.6.22.post1, natsort = 6.0.0, sklearn = 0.21.3
+
+Environment 3:
+- System: Ubuntu 16.04.6 LTS
+- Python: 3.5.2
+- Python packages: pandas = 0.22.0, numpy = 1.16.4, keras = 2.2.4, scipy = 1.0.1, scanpy = 1.3.1+21.g1df151f, anndata = 0.6.20, natsort = 5.2.0, sklearn = 0.19.1
+
+
 ## Contributing
 
 Souce code: [Github](https://github.com/jianhuupenn/ItClust)  
@@ -44,5 +56,4 @@ We are continuing adding new features. Bug reports or feature requests are welco
 
 Please consider citing the following reference:
 
-- 
-<br>https://www.biorxiv.org/content/10.1101/2020.02.02.931139v1.full
+- https://www.biorxiv.org/content/10.1101/2020.02.02.931139v1.full
