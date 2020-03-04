@@ -65,7 +65,7 @@ python3 setup.py install
 # now you can check whether `ItClust` installed successfully!
 ```
 
-The installation should take withoin 30 seconds.
+The installation should take within 30 seconds.
 <br>
 
 
