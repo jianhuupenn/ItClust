@@ -162,7 +162,11 @@ class transfer_learning_clf(object):
             adata_test.obsm["trajectory_Embeded_z_"+str(i)]=trajectory_z[i]
             adata_test.obs["trajectory_"+str(i)]=trajectory_l[i]
 
-        labels=change_to_continuous(q_pred)
+        #labels=change_to_continuous(q_pred)
+        y_pred=np.asarray(np.argmax(q,axis=1),dtype=int)
+        labels=y_pred.astype('U')
+        labels=pd.Categorical(values=labels,categories=natsorted(np.unique(y_pred).astype('U')))
+
         adata_test.obsm["X_Embeded_z"+str(self.save_atr)]=Embeded_z
         adata_test.obs["dec"+str(self.save_atr)]=labels
         adata_test.obs["maxprob"+str(self.save_atr)]=q_pred.max(1)
@@ -192,7 +196,8 @@ class transfer_learning_clf(object):
         source_label=pd.Series(self.adata_train.obs["celltype"],dtype="category")
         source_label=source_label.cat.categories.tolist()
         target_label=self.adata_test.obs["decisy_trans_True"].cat.categories.tolist()
-        for i in range(len(target_label)):
+        target_label_tmp=[int(i) for i in target_label]
+        for i in range(np.max(target_label_tmp)):
             end_cell=self.adata_test.obs.index[self.adata_test.obs["decisy_trans_True"]==target_label[i]]
             start_cell=self.adata_test.obs.index[self.adata_test.obs["trajectory_0"]==target_label[i]]
             overlap=len(set(end_cell).intersection(set(start_cell)))
@@ -222,8 +227,7 @@ class transfer_learning_clf(object):
         print("Doing U-map!")
         sc.pp.neighbors(self.adata_test, n_neighbors=10,use_rep="X_Embeded_z"+str(self.save_atr))
         sc.tl.umap(self.adata_test)
-        self.adata_test.obsm['X_umap'+str(self.save_atr)]=self.adata_test.obsm['X_umap'].copy()
-        return self.adata_test.obsm['X_umap'+str(self.save_atr)]
+        return self.adata_test.obsm['X_umap']
 
     def tSNE(self):
         '''
@@ -232,8 +236,7 @@ class transfer_learning_clf(object):
         '''
         print("Doing t-SNE!")
         sc.tl.tsne(self.adata_test,use_rep="X_Embeded_z"+str(self.save_atr),learning_rate=150,n_jobs=10)
-        self.adata_test.obsm['X_tsne'+(self.save_atr)]=self.adata_test.obsm['X_tsne']
-        return self.adata_test.obsm['X_tsne'+(self.save_atr)]
+        return self.adata_test.obsm['X_tsne']
 
 
 
