@@ -240,7 +240,7 @@ The clustering probability matrix is written to save_dir+"/clustering_prob.csv".
 
 
 ```python
-pred, prob, cell type_pred=clf.predict()
+pred, prob, cell_type_pred=clf.predict()
 pred.head()
 ```
 
