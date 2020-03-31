@@ -195,13 +195,13 @@ class transfer_learning_clf(object):
         celltype_pred={}
         source_label=pd.Series(self.adata_train.obs["celltype"],dtype="category")
         source_label=source_label.cat.categories.tolist()
-        target_label=self.adata_test.obs["decisy_trans_True"].cat.categories.tolist()
-        target_label_tmp=[int(i) for i in target_label]
-        for i in range(np.max(target_label_tmp)):
+        num_ori_ct=self.adata_test.obsm["prob_matrix"+str(self.save_atr)].shape[1]
+        target_label=[str(i) for i in range(num_ori_ct)]
+        for i in range(num_ori_ct):
             end_cell=self.adata_test.obs.index[self.adata_test.obs["decisy_trans_True"]==target_label[i]]
             start_cell=self.adata_test.obs.index[self.adata_test.obs["trajectory_0"]==target_label[i]]
             overlap=len(set(end_cell).intersection(set(start_cell)))
-            celltype_pred[target_label[i]]=[source_label[i],round(overlap/len(end_cell),3)]
+            celltype_pred[target_label[i]]=[source_label[i],round(overlap/(len(end_cell)+0.0001),3)]
 
         # Clustering probability 
         prob=pd.DataFrame(self.adata_test.obsm["prob_matrix"+str(self.save_atr)])
