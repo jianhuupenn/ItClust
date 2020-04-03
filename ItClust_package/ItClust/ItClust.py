@@ -163,7 +163,7 @@ class transfer_learning_clf(object):
             adata_test.obs["trajectory_"+str(i)]=trajectory_l[i]
 
         #labels=change_to_continuous(q_pred)
-        y_pred=np.asarray(np.argmax(q,axis=1),dtype=int)
+        y_pred=np.asarray(np.argmax(q_pred,axis=1),dtype=int)
         labels=y_pred.astype('U')
         labels=pd.Categorical(values=labels,categories=natsorted(np.unique(y_pred).astype('U')))
 
