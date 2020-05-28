@@ -319,7 +319,7 @@ sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","celltype"],title=["ItClust
 
 ```python
 clf.adata_test.obsm['X_umap']=clf.Umap()
-sc.pl.umap(clf.adata_test,color=["decisy_trans_True","celltype"],show=True,save=None,title=["ItClust predition","True cell type"],size=50000/adata_test.shape[0])
+sc.pl.umap(clf.adata_test,color=["decisy_trans_True","celltype"],show=True,save=None,title=["ItClust predition","True cell type"],size=50000/clf.adata_test.shape[0])
 ```
 
 
