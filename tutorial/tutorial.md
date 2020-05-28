@@ -300,10 +300,10 @@ matplotlib.rcParams['figure.dpi']= 300
 colors_use=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', '#98df8a', '#ff9896','#bec1d4','#bb7784','#4a6fe3','#FFFF00''#111010']
 # Run t-SNE
 clf.adata_test.obsm['X_tsne']=clf.tSNE()
-num_cell type=len(clf.adata_test.obs["cell type"].unique())
-clf.adata_test.uns["cell type_colors"]=list(colors_use[:num_cell type])
-clf.adata_test.uns["decisy_trans_True_colors"]=list(colors_use[:num_cell type])
-sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","cell type"],title=["ItClust predition","True cell type"],show=True,size=50000/clf.adata_test.shape[0])
+num_celltype=len(clf.adata_test.obs["celltype"].unique())
+clf.adata_test.uns["celltype_colors"]=list(colors_use[:num_celltype])
+clf.adata_test.uns["decisy_trans_True_colors"]=list(colors_use[:num_celltype])
+sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","celltype"],title=["ItClust predition","True cell type"],show=True,size=50000/clf.adata_test.shape[0])
 ```
 
     Doing t-SNE!
@@ -318,7 +318,7 @@ sc.pl.tsne(clf.adata_test,color=["decisy_trans_True","cell type"],title=["ItClus
 
 
 ```python
-clf.adata_test.obsm['X_umap']
+clf.adata_test.obsm['X_umap']=clf.Umap()
 sc.pl.umap(clf.adata_test,color=["decisy_trans_True","cell type"],show=True,save=None,title=["ItClust predition","True cell type"],size=50000/adata_test.shape[0])
 ```
 
