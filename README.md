@@ -26,7 +26,7 @@ Python support packages: pandas, numpy, keras, scipy, scanpy, anndata, natsort, 
 Environment 1:
 - System: Mac OS 10.13.6
 - Python: 3.7.0
-- Python packages: pandas = 0.25.3, numpy = 1.18.1, keras = 2.2.4, scipy = 1.4.1, scanpy = 1.4.4.post1, anndata = 0.6.22.post1, natsort = 7.0.1, sklearn = 0.22.1
+- Python packages: pandas = 0.25.3, numpy = 1.18.1, keras = 2.2.4, tensorflow = 1.14.0, scipy = 1.4.1, scanpy = 1.4.4.post1, anndata = 0.6.22.post1, natsort = 7.0.1, sklearn = 0.22.1
 
 Environment 2:
 - System: Linux 3.10.0
