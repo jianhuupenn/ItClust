@@ -53,8 +53,8 @@ We are continuing adding new features. Bug reports or feature requests are welco
 ## Issues
 
 If you see this error information: 
-### TypeError: add_weight() got multiple values for argument 'name'
-Please update your Keras and TensorFlow version to the same as tested Environment.
+#### TypeError: add_weight() got multiple values for argument 'name'
+Please update your Keras and TensorFlow to the same version as one of the tested environments.
 
 ## Reference
 
