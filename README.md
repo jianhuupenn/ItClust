@@ -50,6 +50,10 @@ Author email: jianhu@pennmedicine.upenn.edu
 We are continuing adding new features. Bug reports or feature requests are welcome.
 <br>
 
+## Issues
+
+If you see this error information: TypeError: add_weight() got multiple values for argument 'name'
+Please update your Keras and TensorFlow version to the same as tested Environment.
 
 ## Reference
 
