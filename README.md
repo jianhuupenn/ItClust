@@ -61,4 +61,4 @@ Please update your Keras and TensorFlow to the same version as one of the tested
 Please consider citing the following reference:
 - Hu, J., Li, X., Hu, G. et al. Iterative transfer learning with neural network for clustering and cell type classification in single-cell RNA-seq analysis. Nat Mach Intell (2020). https://doi.org/10.1038/s42256-020-00233-7
 - https://www.nature.com/articles/s42256-020-00233-7
-- https://www.biorxiv.org/content/10.1101/2020.02.02.931139v1.full (old)
+- https://www.biorxiv.org/content/10.1101/2020.02.02.931139v1.full (preprint)
