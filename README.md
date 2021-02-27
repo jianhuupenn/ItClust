@@ -6,6 +6,7 @@ ItClust has shown to be a powerful tool for scRNA-seq clustering and cell type c
 
 ![ItClust workflow](docs/asserts/images/workflow.jpg)
 
+Figure made by Nan Ma.
 For thorough details, see the preprint: [Bioxiv]()
 <br>
 
