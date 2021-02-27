@@ -102,7 +102,8 @@ class transfer_learning_clf(object):
         else:
             ng=2000
 
-        ng=np.min(ng, target_data.shape[1])
+        ng=np.min([ng, target_data.shape[1]])
+        print("Number of genes used: ", ng, "out of ", target_data.shape[1])
         sc.pp.filter_genes_dispersion(target_data, n_top_genes=ng)
         sc.pp.log1p(target_data)
         sc.pp.scale(target_data,zero_center=True,max_value=6)
