@@ -102,7 +102,9 @@ class transfer_learning_clf(object):
         else:
             ng=2000
 
-        sc.pp.filter_genes_dispersion(target_data, n_top_genes=ng)
+        if target_data.shape[1]>ng:
+            sc.pp.filter_genes_dispersion(target_data, n_top_genes=ng)
+        
         sc.pp.log1p(target_data)
         sc.pp.scale(target_data,zero_center=True,max_value=6)
         target_data.var_names=[i.upper() for i in list(target_data.var_names)]#avoding some gene have lower letter
