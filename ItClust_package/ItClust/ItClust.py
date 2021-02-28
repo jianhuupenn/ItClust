@@ -27,6 +27,9 @@ class transfer_learning_clf(object):
     def fit(self,
             source_data, #adata
             target_data, #adata
+            normalize=True,
+            take_log=True,
+            scale=True,
             batch_size=256,
             maxiter=1000,
             pretrain_epochs=300,
@@ -74,10 +77,13 @@ class transfer_learning_clf(object):
         #3 prefilter_specialgene: MT and ERCC
         prefilter_specialgenes(source_data)
         #4 normalization,var.genes,log1p,scale
-        sc.pp.normalize_per_cell(source_data)
+        if normalize:
+            sc.pp.normalize_per_cell(source_data)
         #5 scale
-        sc.pp.log1p(source_data)
-        sc.pp.scale(source_data,zero_center=True,max_value=6)
+        if take_log: 
+            sc.pp.log1p(source_data)
+        if scale:
+            sc.pp.scale(source_data,zero_center=True,max_value=6)
         source_data.var_names=[i.upper() for i in list(source_data.var_names)]#avoding some gene have lower letter
         adata_tmp.append(source_data) 
 
@@ -92,7 +98,8 @@ class transfer_learning_clf(object):
         #3 prefilter_specialgene: MT and ERCC
         prefilter_specialgenes(target_data)
         #4 normalization,var.genes,log1p,scale
-        sc.pp.normalize_per_cell(target_data)
+        if normalize:
+            sc.pp.normalize_per_cell(target_data)
 
         # select top genes
         if target_data.X.shape[0]<=1500:
@@ -105,8 +112,10 @@ class transfer_learning_clf(object):
         ng=np.min([ng, target_data.shape[1]])
         print("Number of genes used: ", ng, "out of ", target_data.shape[1])
         sc.pp.filter_genes_dispersion(target_data, n_top_genes=ng)
-        sc.pp.log1p(target_data)
-        sc.pp.scale(target_data,zero_center=True,max_value=6)
+        if take_log: 
+            sc.pp.log1p(target_data)
+        if scale:
+            sc.pp.scale(target_data,zero_center=True,max_value=6)
         target_data.var_names=[i.upper() for i in list(target_data.var_names)]#avoding some gene have lower letter
         adata_tmp.append(target_data)
     
