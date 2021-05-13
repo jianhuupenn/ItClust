@@ -13,7 +13,7 @@ from keras.optimizers import SGD
 from keras import callbacks
 from keras.initializers import VarianceScaling
 from sklearn.cluster import KMeans
-import scanpy.api as sc
+import scanpy as sc
 import pandas as pd
 from sklearn.metrics import normalized_mutual_info_score,adjusted_rand_score
 import keras.backend as K

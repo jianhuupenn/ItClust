@@ -10,7 +10,7 @@ from keras.optimizers import SGD
 import pandas as pd
 import numpy as np
 from scipy.sparse import issparse
-import scanpy.api as sc
+import scanpy as sc
 from anndata import AnnData
 from natsort import natsorted 
 from sklearn import cluster, datasets, mixture,metrics
