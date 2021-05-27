@@ -10,7 +10,7 @@ To install  `ItClust` package you must make sure that your python version is eit
 ```python
 import platform
 platform.python_version()
-#3.5.3
+#3.7.0
 ```
 **Note:** Because ItClust depends on `tensorflow`, you should make sure the version of `tensorflow` is lower than `2.0`. If you want to get the same results as the results in our paper.
 ```
@@ -54,7 +54,7 @@ If you do not have  Python3.5 or Python3.6 installed, consider installing Anacon
 
 ```bash
 # create an environment called ItClust
-conda create -n ItClust python=3.5.3
+conda create -n ItClust python=3.7.0
 # activate your environment 
 conda activate ItClust
 git clone https://github.com/jianhuupenn/ItClust
