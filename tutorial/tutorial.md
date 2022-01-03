@@ -110,7 +110,7 @@ Download the data and unzip it. Then move the data to data/pbmc/.
 
 
 ```python
-adata = read_10X(data_path='./data/pbmc')
+adata = ic.read_10X(data_path='./data/pbmc')
 ```
 
     var_names are not unique, "make_index_unique" has applied
