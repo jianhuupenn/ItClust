@@ -1,4 +1,4 @@
-# ItClust
+# ItClust v1.1.0
 
 ## ItClust: Iterative transfer learning with neural network improves clustering and cell type classification in single-cell RNA-seq analysis
 ItClust is an Iterative Transfer learning algorithm for scRNA-seq Clustering. It starts from building a training neural network to extract gene-expression signatures from a well-labeled source dataset. This step enables initializing the target network with parameters estimated from the training network. The target network then leverages information in the target dataset to iteratively fine-tune parameters in an unsupervised manner, so that the target-data-specific gene-expression signatures are captured. Once fine-tuning is finished, the target network then returns clustered cells in the target data.
