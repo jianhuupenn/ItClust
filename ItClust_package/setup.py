@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="ItClust", 
-    version="1.1.0",
+    version="1.2.0",
     author="Jian Hu",
     author_email="jianhu@pennmedicine.upenn.edu",
     description="An Iterative Transfer learning algorithm for scRNA-seq Clustering",

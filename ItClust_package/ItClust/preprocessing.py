@@ -22,7 +22,7 @@ def read_10X(data_path, var_names='gene_symbols'):
     else:
         var_names = genes[0]
     if not var_names.is_unique:
-        var_names = make_index_unique(pd.Index(var_names))
+        var_names = make_index_unique(pd.Index(var_names)).tolist()
         print('var_names are not unique, "make_index_unique" has applied')
     adata.var_names = var_names
     cells = pd.read_csv(data_path + '/barcodes.tsv', header=None, sep='\t')
