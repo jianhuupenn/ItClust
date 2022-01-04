@@ -27,6 +27,9 @@ class transfer_learning_clf(object):
     def fit(self,
             source_data, #adata
             target_data, #adata
+            normalize=True,
+            take_log=True,
+            scale=True,
             batch_size=256,
             maxiter=1000,
             pretrain_epochs=300,
@@ -74,10 +77,13 @@ class transfer_learning_clf(object):
         #3 prefilter_specialgene: MT and ERCC
         prefilter_specialgenes(source_data)
         #4 normalization,var.genes,log1p,scale
-        sc.pp.normalize_per_cell(source_data)
+        if normalize:
+            sc.pp.normalize_per_cell(source_data)
         #5 scale
-        sc.pp.log1p(source_data)
-        sc.pp.scale(source_data,zero_center=True,max_value=6)
+        if take_log: 
+            sc.pp.log1p(source_data)
+        if scale:
+            sc.pp.scale(source_data,zero_center=True,max_value=6)
         source_data.var_names=[i.upper() for i in list(source_data.var_names)]#avoding some gene have lower letter
         adata_tmp.append(source_data) 
 
@@ -92,7 +98,8 @@ class transfer_learning_clf(object):
         #3 prefilter_specialgene: MT and ERCC
         prefilter_specialgenes(target_data)
         #4 normalization,var.genes,log1p,scale
-        sc.pp.normalize_per_cell(target_data)
+        if normalize:
+            sc.pp.normalize_per_cell(target_data)
 
         # select top genes
         if target_data.X.shape[0]<=1500:
@@ -102,9 +109,13 @@ class transfer_learning_clf(object):
         else:
             ng=2000
 
+        ng=np.min([ng, target_data.shape[1]])
+        print("Number of genes used: ", ng, "out of ", target_data.shape[1])
         sc.pp.filter_genes_dispersion(target_data, n_top_genes=ng)
-        sc.pp.log1p(target_data)
-        sc.pp.scale(target_data,zero_center=True,max_value=6)
+        if take_log: 
+            sc.pp.log1p(target_data)
+        if scale:
+            sc.pp.scale(target_data,zero_center=True,max_value=6)
         target_data.var_names=[i.upper() for i in list(target_data.var_names)]#avoding some gene have lower letter
         adata_tmp.append(target_data)
     
@@ -162,7 +173,11 @@ class transfer_learning_clf(object):
             adata_test.obsm["trajectory_Embeded_z_"+str(i)]=trajectory_z[i]
             adata_test.obs["trajectory_"+str(i)]=trajectory_l[i]
 
-        labels=change_to_continuous(q_pred)
+        #labels=change_to_continuous(q_pred)
+        y_pred=np.asarray(np.argmax(q_pred,axis=1),dtype=int)
+        labels=y_pred.astype('U')
+        labels=pd.Categorical(values=labels,categories=natsorted(np.unique(y_pred).astype('U')))
+
         adata_test.obsm["X_Embeded_z"+str(self.save_atr)]=Embeded_z
         adata_test.obs["dec"+str(self.save_atr)]=labels
         adata_test.obs["maxprob"+str(self.save_atr)]=q_pred.max(1)
@@ -191,12 +206,13 @@ class transfer_learning_clf(object):
         celltype_pred={}
         source_label=pd.Series(self.adata_train.obs["celltype"],dtype="category")
         source_label=source_label.cat.categories.tolist()
-        target_label=self.adata_test.obs["decisy_trans_True"].cat.categories.tolist()
-        for i in range(len(target_label)):
+        num_ori_ct=self.adata_test.obsm["prob_matrix"+str(self.save_atr)].shape[1]
+        target_label=[str(i) for i in range(num_ori_ct)]
+        for i in range(num_ori_ct):
             end_cell=self.adata_test.obs.index[self.adata_test.obs["decisy_trans_True"]==target_label[i]]
             start_cell=self.adata_test.obs.index[self.adata_test.obs["trajectory_0"]==target_label[i]]
             overlap=len(set(end_cell).intersection(set(start_cell)))
-            celltype_pred[target_label[i]]=[source_label[i],round(overlap/len(end_cell),3)]
+            celltype_pred[target_label[i]]=[source_label[i],round(overlap/(len(end_cell)+0.0001),3)]
 
         # Clustering probability 
         prob=pd.DataFrame(self.adata_test.obsm["prob_matrix"+str(self.save_atr)])
@@ -222,8 +238,7 @@ class transfer_learning_clf(object):
         print("Doing U-map!")
         sc.pp.neighbors(self.adata_test, n_neighbors=10,use_rep="X_Embeded_z"+str(self.save_atr))
         sc.tl.umap(self.adata_test)
-        self.adata_test.obsm['X_umap'+str(self.save_atr)]=self.adata_test.obsm['X_umap'].copy()
-        return self.adata_test.obsm['X_umap'+str(self.save_atr)]
+        return self.adata_test.obsm['X_umap']
 
     def tSNE(self):
         '''
@@ -232,8 +247,7 @@ class transfer_learning_clf(object):
         '''
         print("Doing t-SNE!")
         sc.tl.tsne(self.adata_test,use_rep="X_Embeded_z"+str(self.save_atr),learning_rate=150,n_jobs=10)
-        self.adata_test.obsm['X_tsne'+(self.save_atr)]=self.adata_test.obsm['X_tsne']
-        return self.adata_test.obsm['X_tsne'+(self.save_atr)]
+        return self.adata_test.obsm['X_tsne']
 
 
 
